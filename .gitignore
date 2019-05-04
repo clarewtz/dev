@@ -1,0 +1,14 @@
+*.ipynb_checkpoints/
+__pychache__/
+*.pyc
+*~
+*.DS_Store
+auto_examples/
+gen_api/
+.env
+dist
+build/
+*.egg-info/
+.idea/
+build_dist.sh
+.pytest_cache/
