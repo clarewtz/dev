@@ -9,4 +9,4 @@ flake8:
         @echo "flake8 passed"
 
 test:
-				py.test
+	py.test
