@@ -1,26 +1,26 @@
-
+[![Build Status](https://travis-ci.com/reconjohn/dev.svg?branch=master)](https://travis-ci.com/reconjohn/dev)
 <a id='top'></a>
 
 # *pythonic* package development tutorial
 
-There are great resources out there for getting your projects documented and distributed. I got started using [shablona](https://github.com/uwescience/shablona/tree/master/doc) from the eScience institute at U Washington. I would still recommend that to folks. I've found, however, that it can be helpful to start bare-bones and walk through a tutorial to build your package up, to really understand how everything is working together. So in the following, if you follow the tutorial, you'll start with a basic directory structure, and proced to add on documentation, web hosting, continuous integration, coverage, and finally deploy your package on pypi. 
+There are great resources out there for getting your projects documented and distributed. I got started using [shablona](https://github.com/uwescience/shablona/tree/master/doc) from the eScience institute at U Washington. I would still recommend that to folks. I've found, however, that it can be helpful to start bare-bones and walk through a tutorial to build your package up, to really understand how everything is working together. So in the following, if you follow the tutorial, you'll start with a basic directory structure, and proced to add on documentation, web hosting, continuous integration, coverage, and finally deploy your package on pypi.
 
 ## Overview
 
 By the grace of open-source-dev there are several free lunches you should know of:
 
 2. [sphinx](#sphinx)
-    1. sphinx can be a bit [finicky](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/). The most important feature to introduce to you to today will be 
-    2. [autodocs](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/) where we generate documentation from just your 
+    1. sphinx can be a bit [finicky](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/). The most important feature to introduce to you to today will be
+    2. [autodocs](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/) where we generate documentation from just your
     3. [docstrings](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) super cool!
 1. [github pages](#ghpages)
     1. Eventually I'll add a segment on getting your documentation on read the docs. But while code is still in development I've found rtd to be overkill. GH Pages is a simple alternative that hosts your static html files and doesn't require building your site on a remote server.
 3. [travis CI](#travis)
-    1. "CI" stands for continuous integration. These folks provide you with a free service -- up to 1 hour of CPU time on their servers to run all of your unit tests. 
+    1. "CI" stands for continuous integration. These folks provide you with a free service -- up to 1 hour of CPU time on their servers to run all of your unit tests.
 4. [coveralls](#coveralls)
     1. how much of that passed build is covered?!
 5. [pypi](#pypi)
-    1. You want people using your code as fast as possible, right? 
+    1. You want people using your code as fast as possible, right?
 
 <a id='sphinx'></a>
 
@@ -131,26 +131,26 @@ By default, github uses jekyll to build its' sites. We'll want to turn this feat
 
 ### Makefile
 
-We're going to use travis to run our unit tests. Good coding practice dictates that we also check our code for readability. This is done using pep8. 
+We're going to use travis to run our unit tests. Good coding practice dictates that we also check our code for readability. This is done using pep8.
 
 Before we do this with travis we'll want to test our code locally. Same as with the autodocumentation, a Makefile makes this job easier for this. You'll create a new Makefile in the main directory and add the following:
 ```
-flake8: 
-        @if command -v flake8 > /dev/null; then \ 
-                echo "Running flake8"; \ 
-                flake8 flake8 --ignore N802,N806,F401 `find . -name \*.py | grep -v setup.py | grep -v /docs/ | grep -v /sphinx/`; \ 
-        else \ 
-                echo "flake8 not found, please install it!"; \ 
-                exit 1; \ 
-        fi; 
-        @echo "flake8 passed" 
+flake8:
+        @if command -v flake8 > /dev/null; then \
+                echo "Running flake8"; \
+                flake8 flake8 --ignore N802,N806,F401 `find . -name \*.py | grep -v setup.py | grep -v /docs/ | grep -v /sphinx/`; \
+        else \
+                echo "flake8 not found, please install it!"; \
+                exit 1; \
+        fi;
+        @echo "flake8 passed"
 ```
-Basically, we're asking flake8 to run some but not all, tests on some but not all, files. 
+Basically, we're asking flake8 to run some but not all, tests on some but not all, files.
 
 at the end of that file we'll also add:
 ```
-test: 
-        py.test 
+test:
+        py.test
 ```
 You can now run `make flake8` and `make test` and see that your package passes your unittests, locally.
 
@@ -213,7 +213,7 @@ you'll notice that the `.travis.yml` file contains the same flake8 and py.test c
 
 <a id='coveralls'></a>
 
-## Coveralls 
+## Coveralls
 
 [back to top](#top)
 
@@ -227,11 +227,11 @@ travis ci will now pass your build to coveralls.
 
 <a id='pypi'></a>
 
-## pypi 
+## pypi
 
 [back to top](#top)
 
-`setup.py` contains the information that will launch our project on pypi. cd to your main directory and issue the command: `python setup.py sdist upload` (you'll need to have registered an email address + account with them before hand) 
+`setup.py` contains the information that will launch our project on pypi. cd to your main directory and issue the command: `python setup.py sdist upload` (you'll need to have registered an email address + account with them before hand)
 
 At the end of this tutorial, your directory structure will have grown substantially!
 ```
