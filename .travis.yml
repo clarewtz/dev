@@ -3,7 +3,7 @@ sudo: false
 
 deploy:
   provider: pypi
-  user: wesleybeckner
+  user: reconjohn
   password:
     secure:
   on:
