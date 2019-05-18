@@ -34,3 +34,6 @@ script:
 - mkdir for_test
 - cd for_test
 - py.test --pyargs ECS_demo --cov-report term-missing --cov=ECS_demo
+
+after_success:
+- coveralls
