@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/reconjohn/dev.svg?branch=master)](https://travis-ci.com/reconjohn/dev) [![Coverage Status](https://coveralls.io/repos/github/reconjohn/dev/badge.svg?branch=master)](https://coveralls.io/github/reconjohn/dev?branch=master)
+[![Build Status](https://travis-ci.com/reconjohn/dev.svg?branch=master)](https://travis-ci.com/reconjohn/dev) [![Coverage Status](https://coveralls.io/repos/github/reconjohn/dev/badge.svg)](https://coveralls.io/github/reconjohn/dev)
 <a id='top'></a>
 
 # *pythonic* package development tutorial
